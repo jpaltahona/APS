@@ -2,7 +2,7 @@ import React from 'react'
 import { Image, Divider  } from "native-base";
 import {View, Text, SafeAreaView, StyleSheet} from 'react-native';
 import {  Button, FormControl, Input, NativeBaseProvider, Center, Stack } from 'native-base';
-
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 const Auth = ({navigation}) => {
     const [formData, setData] = React.useState({});
     const [errors, setErrors] = React.useState({});
@@ -26,19 +26,17 @@ const Auth = ({navigation}) => {
 
     const onSubmit = () => {
         validate() ? navigation.navigate('Home') : console.log('Validation Failed');
-      };
+    };
     
     
     return (
-    <SafeAreaView style={styles.container}>
+    <KeyboardAwareScrollView >
       <View>
-      <Image source={{
-          uri: "https://wallpaperaccess.com/full/317501.jpg"
-        }} alt="Alternate Text"  
-            style={{ width: '100%', height: 250 }}
+        <Image source={{ uri: "https://wallpaperaccess.com/full/317501.jpg"}} alt="Alternate Text"  
+          style={{ width: '100%', height: 250 }}
         />
         <View style={styles.containerCard}>
-            <Text style={{ color: '#757575', fontSize: 16 , fontWeight: '700', marginBottom: 16}}>Sistema integral de información de Atención Primaria</Text>
+            <Text style={{ color: '#757575', fontSize: 16 , fontWeight: '400', marginBottom: 16, fontStyle: 'italic' }}>Sistema integral de información de Atención Primaria</Text>
             <Divider />
             <View style={{ marginVertical: 16 }}>
                 <Text style={{ color: '#27285B', fontSize: 24 , fontWeight: '700', marginBottom: 16}}>
@@ -75,7 +73,7 @@ const Auth = ({navigation}) => {
             </Stack>
         </View>
       </View>
-    </SafeAreaView>
+    </KeyboardAwareScrollView>
   )
 }
 

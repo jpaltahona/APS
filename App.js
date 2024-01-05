@@ -1,5 +1,3 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -18,9 +16,9 @@ function HomeTabs() {
   return (
     <Tab.Navigator>
       <Tab.Screen name="HomeApp" component={Home} options={{ headerShown: false }} />
+      <Tab.Screen name="AdminUsers" component={AdminUsers} options={{ headerShown: false }} />
       <Tab.Screen name="Caracterizacion" component={Caracterizacion} options={{ headerShown: false }} />
       <Tab.Screen name="RedPrestadora" component={RedPrestadora} options={{ headerShown: false }} />
-      <Tab.Screen name="AdminUsers" component={AdminUsers} options={{ headerShown: false }} />
     </Tab.Navigator>
   );
 }
@@ -28,7 +26,7 @@ function HomeTabs() {
 export default function App() {
   return (
     
-    <NativeBaseProvider>  
+    <NativeBaseProvider>
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen name="Auth" component={Auth} options={{ headerShown: false }} />
@@ -38,12 +36,3 @@ export default function App() {
     </NativeBaseProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
