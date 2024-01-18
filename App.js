@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -8,6 +9,7 @@ import Caracterizacion from './screens/Caracterizacion';
 import RedPrestadora from './screens/RedPrestadora';
 import AdminUsers from './screens/AdminUsers';
 import CreateUser from './screens/AdminUsers/CreateUser';
+import DatabaseService from './database';
 
 
 const Stack = createNativeStackNavigator();
@@ -25,6 +27,19 @@ function HomeTabs() {
 }
 
 export default function App() {
+
+  const initializateServices = async () => {
+    try {
+      const databaseService = new DatabaseService();
+    } catch (error) {
+      
+    }
+  }
+
+  useEffect( () => {
+    initializateServices()
+  }, [] )
+
   return (
     
     <NativeBaseProvider>

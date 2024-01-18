@@ -1,6 +1,7 @@
 import React from 'react'
 import { StyleSheet, Text, View, ScrollView } from 'react-native'
 import {  Button, FormControl, Input, Center, Stack, Select, CheckIcon, WarningOutlineIcon } from 'native-base';
+import DatabaseService from '../../database';
 
 const CreateUser = () => {
   const [formData, setData] = React.useState({});
@@ -25,6 +26,9 @@ const CreateUser = () => {
 
 const onSubmit = () => {
     validate() ;
+    console.log(formData)
+   let dataBase = new DatabaseService()
+   dataBase.insertUsuario(formData)
 };
 
   return (
@@ -37,7 +41,9 @@ const onSubmit = () => {
               _selectedItem={{
               bg: "teal.600",
               endIcon: <CheckIcon size={5} />
-            }}>
+            }}
+            onValueChange={ value =>setData({ ...formData, doctype: value }) }
+            >
               <Select.Item label="C.C" value="CC" />
               <Select.Item label="Tarjeta de identidad" value="Ti" />
               <Select.Item label="Pasaporte" value="PS" />
@@ -100,8 +106,11 @@ const onSubmit = () => {
             <Select accessibilityLabel="Tipo de documento" placeholder="Seleccione" 
               _selectedItem={{
               bg: "teal.600",
-              endIcon: <CheckIcon size={5} />
-            }}>
+              endIcon: <CheckIcon size={5} 
+              />
+            }}
+            onValueChange={ value =>setData({ ...formData, cargo: value }) }
+            >
               <Select.Item label="Aux. Enfermeria" value="Auxenfermeria" />
             </Select>
             {'cargo' in errors && <FormControl.ErrorMessage>Error</FormControl.ErrorMessage> }
@@ -113,7 +122,9 @@ const onSubmit = () => {
               _selectedItem={{
               bg: "teal.600",
               endIcon: <CheckIcon size={5} />
-            }}>
+            }}
+            onValueChange={ value =>setData({ ...formData, team: value }) }
+            >
               <Select.Item label="PIC" value="PIC" />
             </Select>
             {'team' in errors && <FormControl.ErrorMessage>Error</FormControl.ErrorMessage> }
@@ -125,7 +136,9 @@ const onSubmit = () => {
               _selectedItem={{
               bg: "teal.600",
               endIcon: <CheckIcon size={5} />
-            }}>
+            }}
+            onValueChange={ value =>setData({ ...formData, subRegion: value }) }
+            >
               <Select.Item label="Sub Region" value="subRegion" />
             </Select>
             {'subRegion' in errors && <FormControl.ErrorMessage>Error</FormControl.ErrorMessage> }
@@ -137,7 +150,9 @@ const onSubmit = () => {
               _selectedItem={{
               bg: "teal.600",
               endIcon: <CheckIcon size={5} />
-            }}>
+            }}
+            onValueChange={ value =>setData({ ...formData, municipio: value }) }
+            >
               <Select.Item label="Municipio" value="municipio" />
             </Select>
             {'municipio' in errors && <FormControl.ErrorMessage>Error</FormControl.ErrorMessage> }
@@ -145,11 +160,13 @@ const onSubmit = () => {
 
         <FormControl isRequired isInvalid={'microterritorio' in errors}>
             <FormControl.Label  _text={{ bold: true }} style={styles.labels}>Microterritorio</FormControl.Label>
-            <Select accessibilityLabel="municipio" placeholder="Seleccione" 
+            <Select accessibilityLabel="microterritorio" placeholder="Seleccione" 
               _selectedItem={{
               bg: "teal.600",
               endIcon: <CheckIcon size={5} />
-            }}>
+            }}
+            onValueChange={ value =>setData({ ...formData, microterritorio: value }) }
+            >
               <Select.Item label="Microterritorio" value="microterritorio" />
             </Select>
             {'microterritorio' in errors && <FormControl.ErrorMessage>Error</FormControl.ErrorMessage> }
@@ -171,22 +188,28 @@ const onSubmit = () => {
               _selectedItem={{
               bg: "teal.600",
               endIcon: <CheckIcon size={5} />
-            }}>
+            }}
+            onValueChange={ value =>setData({ ...formData, nTerritorio: value }) }
+            >
               <Select.Item label="1Rural" value="1Rural" />
             </Select>
             {'nTerritorio' in errors && <FormControl.ErrorMessage>Error</FormControl.ErrorMessage> }
         </FormControl>
 
-        <FormControl isRequired isInvalid={'Divisiongeografica' in errors}>
+        <FormControl isRequired isInvalid={'divisiongeografica' in errors}>
             <FormControl.Label  _text={{ bold: true }} style={styles.labels}>Division geografica</FormControl.Label>
             <Select accessibilityLabel="Division geografica" placeholder="Seleccione" 
               _selectedItem={{
               bg: "teal.600",
-              endIcon: <CheckIcon size={5} />
-            }}>
+              endIcon: <CheckIcon size={5}
+              
+              />
+            }}
+            onValueChange={ value =>setData({ ...formData, divisiongeografica: value }) }
+            >
               <Select.Item label="Centro Poblado" value="centroPoblado" />
             </Select>
-            {'Divisiongeografica' in errors && <FormControl.ErrorMessage>Error</FormControl.ErrorMessage> }
+            {'divisiongeografica' in errors && <FormControl.ErrorMessage>Error</FormControl.ErrorMessage> }
         </FormControl>
 
         <FormControl isRequired isInvalid={'zona' in errors} style={{ marginTop: 16 }}>
@@ -199,14 +222,14 @@ const onSubmit = () => {
           {'zona' in errors && <FormControl.ErrorMessage>Error</FormControl.ErrorMessage>}
         </FormControl>
 
-        <FormControl isRequired isInvalid={'hopital' in errors} style={{ marginTop: 16 }}>
-          <FormControl.Label _text={{ bold: true }} style={styles.labels}>Hopital</FormControl.Label>
+        <FormControl isRequired isInvalid={'hospital' in errors} style={{ marginTop: 16 }}>
+          <FormControl.Label _text={{ bold: true }} style={styles.labels}>hospital</FormControl.Label>
           <Input type='text' 
-            placeholder="hopital"
-            onChangeText={value => setData({ ...formData, hopital: value })}
+            placeholder="hospital"
+            onChangeText={value => setData({ ...formData, hospital: value })}
             style={styles.inputs}
           />
-          {'hopital' in errors && <FormControl.ErrorMessage>Error</FormControl.ErrorMessage>}
+          {'hospital' in errors && <FormControl.ErrorMessage>Error</FormControl.ErrorMessage>}
         </FormControl>
 
         <Button onPress={onSubmit} mt="5" padding={4} backgroundColor="#FF6708" borderRadius={10} marginBottom={10}>

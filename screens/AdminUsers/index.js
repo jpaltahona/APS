@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { View, Text, StyleSheet, ScrollView } from 'react-native'
 import { Table, Row,  } from 'react-native-reanimated-table';
 import { Button, Input} from "native-base";
+import DatabaseService from '../../database';
 
 const AdminUsers = (props) => {
   const [tableData, setTableData] = useState({
@@ -16,6 +17,20 @@ const AdminUsers = (props) => {
     ]
   })
   console.log('props',props)
+  const initializateServices = async () => {
+    try {
+      const databaseService = new DatabaseService();
+      const users = await databaseService.getUsers();
+      console.log('usuarios ', users)
+
+    } catch (error) {
+      console.log('error ', error)
+    }
+  }
+  useEffect( () => {
+    initializateServices()
+  }, [] )
+
   return (
     <View style={styles.container}>
       <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center',  marginBottom: 17  }}>
