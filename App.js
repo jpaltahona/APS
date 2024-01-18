@@ -7,6 +7,7 @@ import { NativeBaseProvider, Box } from "native-base";
 import Caracterizacion from './screens/Caracterizacion';
 import RedPrestadora from './screens/RedPrestadora';
 import AdminUsers from './screens/AdminUsers';
+import CreateUser from './screens/AdminUsers/CreateUser';
 
 
 const Stack = createNativeStackNavigator();
@@ -31,6 +32,7 @@ export default function App() {
         <Stack.Navigator>
           <Stack.Screen name="Auth" component={Auth} options={{ headerShown: false }} />
           <Stack.Screen name="Home" component={HomeTabs} options={{ headerShown: false }} />
+          <Stack.Screen name="CreateUser" component={CreateUser} options={{ headerShown: true, }} />
         </Stack.Navigator>
       </NavigationContainer>
     </NativeBaseProvider>

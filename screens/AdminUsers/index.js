@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, ScrollView } from 'react-native'
 import { Table, Row,  } from 'react-native-reanimated-table';
 import { Button, Input} from "native-base";
 
-const AdminUsers = () => {
+const AdminUsers = (props) => {
   const [tableData, setTableData] = useState({
     tableHead: ['#', 'NOMBRES Y APELLIDOS', 'MICROTERRITORIO', 'UBICACION', 'N. TERRITORIO'],
     widthArr: [40, 170, 150, 120, 120 ],
@@ -15,12 +15,12 @@ const AdminUsers = () => {
       ['a', 'b', 'c', 'd', '3']
     ]
   })
-
+  console.log('props',props)
   return (
     <View style={styles.container}>
       <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center',  marginBottom: 17  }}>
         <Text style={styles.titleSection}>Administración de Usuarios</Text> 
-        <Button bg='#FF6708'>
+        <Button bg='#FF6708' onPress={ () => props.navigation.navigate('CreateUser') }>
           <Text>Add</Text>
         </Button>
       </View>

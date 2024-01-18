@@ -1,6 +1,5 @@
 import { StyleSheet, View, ScrollView } from 'react-native'
 import React from 'react'
-import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { StatusBar } from "native-base";
 import Tarjeta from '../Components/Tarjeta';
 
@@ -27,6 +26,8 @@ const styles = StyleSheet.create({
   },
   contentCard: {
     flexDirection: 'row',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    marginVertical: 5, 
+    gap: 3
   }
 })

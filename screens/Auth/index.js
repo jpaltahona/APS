@@ -3,6 +3,7 @@ import { Image, Divider  } from "native-base";
 import {View, Text, SafeAreaView, StyleSheet} from 'react-native';
 import {  Button, FormControl, Input, NativeBaseProvider, Center, Stack } from 'native-base';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+
 const Auth = ({navigation}) => {
     const [formData, setData] = React.useState({});
     const [errors, setErrors] = React.useState({});
